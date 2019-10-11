@@ -98,10 +98,10 @@ peer.on('call', call => {
 $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
     console.log(id);
-    //openStream()
-    nogetVideo()
+    openStream()
+    //nogetVideo()
         .then(stream => {
-            //playStream('localStream', stream);
+            playStream('localStream', stream);
             const call = peer.call(id, stream);
             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
         });
