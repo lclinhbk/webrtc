@@ -44,10 +44,6 @@ function openStream() {
     const config = { audio: false, video: true };
     return navigator.mediaDevices.getUserMedia(config);
 }
-function nogetVideo() {
-    const config = { audio: true, video: false };
-    return navigator.mediaDevices.getUserMedia(config);
-}
 
 function playStream(idVideoTag, stream) {
     const video = document.getElementById(idVideoTag);
@@ -99,7 +95,6 @@ $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
     console.log(id);
     openStream()
-    //nogetVideo()
         .then(stream => {
             playStream('localStream', stream);
             const call = peer.call(id, stream);
