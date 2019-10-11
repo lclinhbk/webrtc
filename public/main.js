@@ -101,7 +101,7 @@ $('#ulUser').on('click', 'li', function() {
     //openStream()
     nogetMedia()
         .then(stream => {
-            //playStream('localStream', stream);
+            playStream('localStream', stream);
             const call = peer.call(id, stream);
             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
         });
