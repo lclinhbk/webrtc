@@ -91,33 +91,33 @@ peer.on('call', call => {
     openStream()
     //getNoMedia()
         .then(stream => {
-            call.answer(stream);
-            playStream('localStream', stream);
-            call.on('dest.stream', remoteStream => playStream('remoteStream', remoteStream));
+            call.answer();
+            //playStream('localStream', stream);
+            call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
         });
 });
 
-// $('#ulUser').on('click', 'li', function() {
-//     const id = $(this).attr('id');
-//     console.log(id);
-//     openStream()
-//         .then(stream => {
-//             playStream('localStream', stream);
-//             const call = peer.call(id, stream);
-//             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-//         });
-// });
 $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
     console.log(id);
-//     openStream()
-//         .then(stream => {
-//             playStream('localStream', stream);
-//             const call = peer.call(id, stream);
-//             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-//         });
-    const audioCtx = new AudioContext();
-    const dest = audioCtx.createMediaStreamDestination();
-    const call = peer.call(id, dest.stream);
-    call.on('dest.stream', remoteStream => playStream('remoteStream', remoteStream));
+    openStream()
+        .then(stream => {
+            playStream('localStream', stream);
+            const call = peer.call(id, stream);
+            call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+        });
 });
+// $('#ulUser').on('click', 'li', function() {
+//     const id = $(this).attr('id');
+//     console.log(id);
+// //     openStream()
+// //         .then(stream => {
+// //             playStream('localStream', stream);
+// //             const call = peer.call(id, stream);
+// //             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+// //         });
+//     const audioCtx = new AudioContext();
+//     const dest = audioCtx.createMediaStreamDestination();
+//     const call = peer.call(id, dest.stream);
+//     call.on('dest.stream', remoteStream => playStream('remoteStream', remoteStream));
+// });
