@@ -88,13 +88,13 @@ $('#btnCall').click(() => {
 
 //Callee
 peer.on('call', call => {
-    openStream()
-    //getNoMedia()
-        .then(stream => {
+//     openStream()
+//     //getNoMedia()
+//         .then(stream => {
             call.answer();
             //playStream('localStream', stream);
             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-        });
+//         });
 });
 
 $('#ulUser').on('click', 'li', function() {
