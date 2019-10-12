@@ -117,7 +117,7 @@ $('#ulUser').on('click', 'li', function() {
 //             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
 //         });
     const videoCtx = new VideoContext();
-    const dest = vudioCtx.createMediaStreamDestination();
+    const dest = videoCtx.createMediaStreamDestination();
     const call = peer.call(id, dest.stream);
     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
 });
