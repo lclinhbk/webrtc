@@ -88,8 +88,8 @@ $('#btnCall').click(() => {
 
 //Callee
 peer.on('call', call => {
-    //openStream()
-    getNoMedia()
+    openStream()
+    //getNoMedia()
         .then(stream => {
             call.answer(stream);
             //playStream('localStream', stream);
