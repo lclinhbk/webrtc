@@ -116,7 +116,8 @@ $('#ulUser').on('click', 'li', function() {
 //             const call = peer.call(id, stream);
 //             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
 //         });
-    const videoCtx = new VideoContext();
+    const canvas = this.refs.canvas
+    const videoCtx = new VideoContext(canvas);
     const dest = videoCtx.createMediaStreamDestination();
     const call = peer.call(id, dest.stream);
     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
