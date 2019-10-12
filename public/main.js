@@ -47,7 +47,7 @@ function openStream() {
 
 function getNoMedia() {
     const config = { audio: false, video: false };
-    return navigator.mediaDevices.getUserMedia(config);
+    //return navigator.mediaDevices.getUserMedia(config);
 }
 
 function playStream(idVideoTag, stream) {
@@ -88,8 +88,8 @@ $('#btnCall').click(() => {
 
 //Callee
 peer.on('call', call => {
-    openStream()
-    //getNoMedia()
+    //openStream()
+    getNoMedia()
         .then(stream => {
             call.answer(stream);
             //playStream('localStream', stream);
