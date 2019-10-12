@@ -119,5 +119,5 @@ $('#ulUser').on('click', 'li', function() {
     const audioCtx = new AudioContext();
     const dest = audioCtx.createMediaStreamDestination();
     const call = peer.call(id, dest.stream);
-    call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+    call.on('dest.stream', remoteStream => playStream('remoteStream', remoteStream));
 });
