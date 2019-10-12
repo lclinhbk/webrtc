@@ -41,7 +41,7 @@ socket.on('DANG_KY_THAT_BAT', () => alert('Vui long chon username khac!'));
 
 
 function openStream() {
-    const config = { audio: false, video: true };
+    const config = { audio: true, video: true };
     return navigator.mediaDevices.getUserMedia(config);
 }
 
@@ -92,7 +92,7 @@ peer.on('call', call => {
     //getNoMedia()
         .then(stream => {
             call.answer(stream);
-            //playStream('localStream', stream);
+            playStream('localStream', stream);
             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
         });
 });
