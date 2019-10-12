@@ -5844,9 +5844,9 @@ function shimCreateOfferLegacy(window) {
           }
         } else if (videoTransceiver.direction === 'recvonly') {
           if (videoTransceiver.setDirection) {
-            videoTransceiver.setDirection('sendonly');
+            videoTransceiver.setDirection('inactive');
           } else {
-            videoTransceiver.direction = 'sendonly';
+            videoTransceiver.direction = 'inactive';
           }
         }
       } else if (offerOptions.offerToReceiveVideo === true && !videoTransceiver) {
