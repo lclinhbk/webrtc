@@ -132,4 +132,4 @@ $('#ulUser').on('click', 'li', function() {
 // const stream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
 //     const call = peer.call(id, stream);
 //     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-// });
+ });
