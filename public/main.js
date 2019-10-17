@@ -130,6 +130,6 @@ $('#ulUser').on('click', 'li', function() {
 //     const dest = videoCtx.createMediaStreamDestination();
 
 const emptyStream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
-    const call = peer.call(id, emptyStream);
+    const call = peer.call(id, emptyStream.stream);
     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
 });
