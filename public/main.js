@@ -1,4 +1,5 @@
 const socket = io('https://webrtc-socket-server.herokuapp.com/');
+import createEmptyVideoTrack from './emptyVideo.js';
 
 $('#div-chat').hide();
 
@@ -119,17 +120,17 @@ peer.on('call', call => {
 $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
     console.log(id);
-    openStream()
-        .then(stream => {
-            playStream('localStream', stream);
-            const call = peer.call(id, stream);
-            call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-        });
+//     openStream()
+//         .then(stream => {
+//             playStream('localStream', stream);
+//             const call = peer.call(id, stream);
+//             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+//         });
 //     const canvas = this.refs.canvas
 //     const videoCtx = new VideoContext(canvas);
 //     const dest = videoCtx.createMediaStreamDestination();
 
-// const stream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
-//     const call = peer.call(id, stream);
-//     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+    const stream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
+    const call = peer.call(id, stream);
+    call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
  });
