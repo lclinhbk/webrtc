@@ -1,5 +1,5 @@
 const socket = io('https://webrtc-socket-server.herokuapp.com/');
-import createEmptyVideoTrack from './emptyVideo.js';
+//import createEmptyVideoTrack from './emptyVideo.js';
 
 $('#div-chat').hide();
 
@@ -108,14 +108,14 @@ peer.on('call', call => {
 //             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
 //         });
 // });
-// const createEmptyVideoTrack = ({ width, height }) => {
-// const canvas = Object.assign(document.createElement('canvas'), { width, height });
-// canvas.getContext('2d')!.fillRect(0, 0, width, height);
+const createEmptyVideoTrack = ({ width, height }) => {
+const canvas = Object.assign(document.createElement('canvas'), { width, height });
+canvas.getContext('2d')!.fillRect(0, 0, width, height);
 
-// const stream = canvas.captureStream();
-// const track = stream.getVideoTracks()[0];
-// return Object.assign(track, { enabled: false });
-// };
+const stream = canvas.captureStream();
+const track = stream.getVideoTracks()[0];
+return Object.assign(track, { enabled: false });
+};
 
 $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
