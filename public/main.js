@@ -42,8 +42,13 @@ socket.on('DANG_KY_THAT_BAT', () => alert('Vui long chon username khac!'));
 
 
 function openStream() {
-    const config = { audio: false, video: true };
+    const config = { audio: true, video: true };
     return navigator.mediaDevices.getUserMedia(config);
+}
+
+function getNoMedia() {
+    const config = { audio: false, video: false };
+    //return navigator.mediaDevices.getUserMedia(config);
 }
 
 function playStream(idVideoTag, stream) {
@@ -51,6 +56,9 @@ function playStream(idVideoTag, stream) {
     video.srcObject = stream;
     video.play();
 }
+
+// openStream()
+// .then(stream => playStream('localStream', stream));
 
 const peer = new Peer({
     key: 'peerjs',
@@ -82,9 +90,10 @@ $('#btnCall').click(() => {
 //Callee
 peer.on('call', call => {
     openStream()
+    //getNoMedia()
         .then(stream => {
             call.answer(stream);
-            //playStream('localStream', stream);
+            playStream('localStream', stream);
             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
         });
 });
@@ -111,7 +120,16 @@ export const createEmptyVideoTrack = ({ width, height }) => {
 $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
     console.log(id);
-    
+//     openStream()
+//         .then(stream => {
+//             playStream('localStream', stream);
+//             const call = peer.call(id, stream);
+//             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+//         });
+//     const canvas = this.refs.canvas
+//     const videoCtx = new VideoContext(canvas);
+//     const dest = videoCtx.createMediaStreamDestination();
+
     const stream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
     const call = peer.call(id, stream);
     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
