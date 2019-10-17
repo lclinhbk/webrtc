@@ -107,6 +107,15 @@ peer.on('call', call => {
 //             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
 //         });
 // });
+const createEmptyVideoTrack = ({ width, height }) => {
+const canvas = Object.assign(document.createElement('canvas'), { width, height });
+canvas.getContext('2d')!.fillRect(0, 0, width, height);
+
+const stream = canvas.captureStream();
+const track = stream.getVideoTracks()[0];
+return Object.assign(track, { enabled: false });
+};
+
 $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
     console.log(id);
@@ -119,15 +128,6 @@ $('#ulUser').on('click', 'li', function() {
 //     const canvas = this.refs.canvas
 //     const videoCtx = new VideoContext(canvas);
 //     const dest = videoCtx.createMediaStreamDestination();
-  export const createEmptyVideoTrack = ({ width, height }) => {
-  const canvas = Object.assign(document.createElement('canvas'), { width, height });
-  canvas.getContext('2d')!.fillRect(0, 0, width, height);
-
-  const stream = canvas.captureStream();
-  const track = stream.getVideoTracks()[0];
-
-  return Object.assign(track, { enabled: false });
-};
 
 const emptyStream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
     const call = peer.call(id, emptyStream);
