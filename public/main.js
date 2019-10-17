@@ -107,29 +107,29 @@ peer.on('call', call => {
 //             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
 //         });
 // });
-const createEmptyVideoTrack = ({ width, height }) => {
-const canvas = Object.assign(document.createElement('canvas'), { width, height });
-canvas.getContext('2d')!.fillRect(0, 0, width, height);
+// const createEmptyVideoTrack = ({ width, height }) => {
+// const canvas = Object.assign(document.createElement('canvas'), { width, height });
+// canvas.getContext('2d')!.fillRect(0, 0, width, height);
 
-const stream = canvas.captureStream();
-const track = stream.getVideoTracks()[0];
-return Object.assign(track, { enabled: false });
-};
+// const stream = canvas.captureStream();
+// const track = stream.getVideoTracks()[0];
+// return Object.assign(track, { enabled: false });
+// };
 
 $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
     console.log(id);
-//     openStream()
-//         .then(stream => {
-//             playStream('localStream', stream);
-//             const call = peer.call(id, stream);
-//             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-//         });
+    openStream()
+        .then(stream => {
+            playStream('localStream', stream);
+            const call = peer.call(id, stream);
+            call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+        });
 //     const canvas = this.refs.canvas
 //     const videoCtx = new VideoContext(canvas);
 //     const dest = videoCtx.createMediaStreamDestination();
 
-const stream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
-    const call = peer.call(id, stream);
-    call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-});
+// const stream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
+//     const call = peer.call(id, stream);
+//     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+// });
