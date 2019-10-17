@@ -1,5 +1,4 @@
 const socket = io('https://webrtc-socket-server.herokuapp.com/');
-//import createEmptyVideoTrack from './emptyVideo.js';
 
 $('#div-chat').hide();
 
@@ -42,13 +41,8 @@ socket.on('DANG_KY_THAT_BAT', () => alert('Vui long chon username khac!'));
 
 
 function openStream() {
-    const config = { audio: true, video: true };
+    const config = { audio: false, video: true };
     return navigator.mediaDevices.getUserMedia(config);
-}
-
-function getNoMedia() {
-    const config = { audio: false, video: false };
-    //return navigator.mediaDevices.getUserMedia(config);
 }
 
 function playStream(idVideoTag, stream) {
@@ -57,8 +51,7 @@ function playStream(idVideoTag, stream) {
     video.play();
 }
 
-// openStream()
-// .then(stream => playStream('localStream', stream));
+
 
 const peer = new Peer({
     key: 'peerjs',
@@ -93,7 +86,7 @@ peer.on('call', call => {
     //getNoMedia()
         .then(stream => {
             call.answer(stream);
-            playStream('localStream', stream);
+            //playStream('localStream', stream);
             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
         });
 });
@@ -108,7 +101,7 @@ peer.on('call', call => {
 //             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
 //         });
 // });
-export const createEmptyVideoTrack = ({ width, height }) => {
+const createEmptyVideoTrack = ({ width, height }) => {
     const canvas = Object.assign(document.createElement('canvas'), { width, height });
     canvas.getContext('2d').fillRect(0, 0, width, height);
 
@@ -120,15 +113,6 @@ export const createEmptyVideoTrack = ({ width, height }) => {
 $('#ulUser').on('click', 'li', function() {
     const id = $(this).attr('id');
     console.log(id);
-//     openStream()
-//         .then(stream => {
-//             playStream('localStream', stream);
-//             const call = peer.call(id, stream);
-//             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-//         });
-//     const canvas = this.refs.canvas
-//     const videoCtx = new VideoContext(canvas);
-//     const dest = videoCtx.createMediaStreamDestination();
 
     const stream = new MediaStream([createEmptyVideoTrack({ width: 400, height: 300 })]);
     const call = peer.call(id, stream);
