@@ -30,7 +30,9 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
         console.log(peerId);
         var count = $("#ulUser").children().length;
         if (count > 1 ) {
-            $("#"+peerId).click();
+            $(".firstCam").click();
+        } else {
+             $("#"+peerId).addClass("firstCam");
         }
     });
 
@@ -40,7 +42,9 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
         console.log(peerId+"nguoi dung moi");
         var total = $("#ulUser").children().length;
         if (total > 1 ) {
-            $("#"+peerId).click();
+            $(".firstCam").click();
+        } else {
+             $("#"+peerId).addClass("firstCam");
         }
     });
 
