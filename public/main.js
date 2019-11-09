@@ -1,6 +1,7 @@
 const socket = io('https://webrtc-socket-server.herokuapp.com/');
 
 $('#div-chat').hide();
+$("#div-dang-ky").hide();
 
 customConfig = {
     'iceServers': [
@@ -52,6 +53,9 @@ function openStream() {
 
 function playStream(idVideoTag, stream) {
     const video = document.getElementById(idVideoTag);
+    if (!video) {
+        return false;
+    }
     video.srcObject = stream;
     video.play();
 }
@@ -126,6 +130,7 @@ $('#ulUser').on('click', 'li', function() {
 
 $( document ).ready(function() {
   // Handler for .ready() called.
+    
     var randomN = $.now();
     $("#txtUsername").val("linh"+randomN);
     setTimeout(function() { 
