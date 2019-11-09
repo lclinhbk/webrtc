@@ -29,7 +29,7 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
         $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
         console.log(firstCamId+"nguoi dung cu");
         if (firstCamId && firstCamId != peerId  ) {
-            $('#ulUser').append(`<li id="${firstCamId}">${firstCamTen}</li>`);
+            $('#ulUser').append(`<li id="${firstCamId}" class="tu arrUserInfo">${firstCamTen}</li>`);
             $("#"+firstCamId).click();
         }
     });
@@ -41,7 +41,7 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
         console.log(stt);
         
         if (firstCamId && firstCamId != peerId ) {
-            $('#ulUser').append(`<li id="${firstCamId}">${firstCamTen}</li>`);
+            $('#ulUser').append(`<li id="${firstCamId}" class="tu CO_NGUOI_DUNG_MOI">${firstCamTen}</li>`);
             $("#"+firstCamId).click();
         }
     });
