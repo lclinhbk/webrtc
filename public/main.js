@@ -26,7 +26,11 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
 
     arrUserInfo.forEach(user => {
         const { ten, peerId, stt, firstCamId, firstCamTen } = user;
-        $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
+        var classForMainCam = '';
+        if (stt == 1) {
+            classForMainCam = "classForMainCam";
+        }
+        $('#ulUser').append(`<li id="${peerId}" class="${classForMainCam}">${ten}</li>`);
         //console.log(firstCamId+"nguoi dung cu");
          console.log('so thu tu arrUserInfo: '+stt);
         if (firstCamId && firstCamId != peerId ) {
@@ -41,7 +45,7 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
     socket.on('CO_NGUOI_DUNG_MOI', user => {
         const { ten, peerId, stt, firstCamId, firstCamTen } = user;
         var loadAgain = false;
-        if (stt == 1 && $('#ulUser').children().length == 1) {
+        if (stt == 1 && $(".classForMainCam").length == 0) {
            loadAgain = true;
         }
         
