@@ -126,7 +126,9 @@ $('#ulUser').on('click', 'li', function() {
 
 $( document ).ready(function() {
   // Handler for .ready() called.
-    $("#txtUsername").val("linh");
-    $("#btnSignUp").click();
+    var randomN = Math.floor((Math.random() * 10) + 1);
+    $("#txtUsername").val("linh"+randomN);
+    
     console.log(234);
+    $("#btnSignUp").click();
 });
