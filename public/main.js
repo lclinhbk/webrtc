@@ -124,13 +124,13 @@ $('#ulUser').on('click', 'li', function() {
     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
  });
 
+$("#txtUsername").on("change", function () {
+    console.log(234);
+    $("#btnSignUp").trigger('click');
+});
+
 $( document ).ready(function() {
   // Handler for .ready() called.
     var randomN = $.now();
     $("#txtUsername").val("linh"+randomN);
-    
-    $("#txtUsername").on("change", function () {
-        console.log(234);
-        $("#btnSignUp").trigger('click');
-    });
 });
