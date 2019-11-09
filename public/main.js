@@ -44,7 +44,7 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
         //console.log(peerId+"nguoi dung moi");
         console.log('so thu tu CO_NGUOI_DUNG_MOI: '+stt);
         
-        if (firstCamId && firstCamId != peerId) {
+        if ((firstCamId && firstCamId != peerId) || (stt == 1 && $('#ulUser').children().length == 1)) {
             if ($("#" + firstCamId).length == 0 ) {
                $('#ulUser').append(`<li id="${firstCamId}" class="tu CO_NGUOI_DUNG_MOI">${firstCamTen}</li>`);
             }
