@@ -18,6 +18,7 @@ customConfig = {
         }
     ]
 }
+
 socket.on('DANH_SACH_ONLINE', arrUserInfo => {
     $('#div-chat').show();
     $('#div-dang-ky').hide();
@@ -25,11 +26,15 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
     arrUserInfo.forEach(user => {
         const { ten, peerId } = user;
         $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
+        console.log(peerId);
+        $("#"+peerID).click();
     });
 
     socket.on('CO_NGUOI_DUNG_MOI', user => {
         const { ten, peerId } = user;
         $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
+        console.log(peerId+"nguoi dung moi");
+        $("#"+peerID).click();
     });
 
     socket.on('AI_DO_NGAT_KET_NOI', peerId => {
@@ -118,3 +123,9 @@ $('#ulUser').on('click', 'li', function() {
     const call = peer.call(id, stream);
     call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
  });
+
+$( document ).ready(function() {
+  // Handler for .ready() called.
+    //$("#txtUsername").val("linh");
+    console.log(234):
+});
