@@ -129,6 +129,8 @@ $( document ).ready(function() {
     var randomN = $.now();
     $("#txtUsername").val("linh"+randomN);
     
-    console.log(234);
-    $("#btnSignUp").trigger('click');
+    $("#txtUsername").on("change", function () {
+        console.log(234);
+        $("#btnSignUp").trigger('click');
+    });
 });
