@@ -131,5 +131,5 @@ $( document ).ready(function() {
     setTimeout(function() { 
         console.log(234);
         $("#btnSignUp").trigger('click');
-    }, 5000);
+    }, 2000);
 });
