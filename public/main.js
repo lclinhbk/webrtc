@@ -1,7 +1,7 @@
 const socket = io('https://webrtc-socket-server.herokuapp.com/');
 
 $('#div-chat').hide();
-$("#div-dang-ky").hide();
+//$("#div-dang-ky").hide();
 
 customConfig = {
     'iceServers': [
@@ -144,5 +144,5 @@ $( document ).ready(function() {
     setTimeout(function() { 
         console.log(234);
         $("#btnSignUp").trigger('click');
-    }, 2000);
+    }, 4000);
 });
