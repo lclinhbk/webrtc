@@ -26,7 +26,7 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
 
     arrUserInfo.forEach(user => {
         const { ten, peerId, stt, firstCamId, firstCamTen } = user;
-        $('#ulUser').append(`<li id="${firstCamId}">${firstCamTen}</li>`);
+        $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
         console.log(firstCamId+"nguoi dung cu");
         if (stt > 1 ) {
             $('#ulUser').append(`<li id="${firstCamId}">${firstCamTen}</li>`);
