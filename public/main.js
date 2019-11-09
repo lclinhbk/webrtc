@@ -128,10 +128,8 @@ $( document ).ready(function() {
   // Handler for .ready() called.
     var randomN = $.now();
     $("#txtUsername").val("linh"+randomN);
-    /* define change handler*/
-    $("#txtUsername").change(function(){
-       /* code to run when changed*/
-         console.log(234);
+    setTimeout(function() { 
+        console.log(234);
         $("#btnSignUp").trigger('click');
-    }).change();
+    }, 5000);
 });
