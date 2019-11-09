@@ -45,11 +45,13 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
     socket.on('CO_NGUOI_DUNG_MOI', user => {
         const { ten, peerId, stt, firstCamId, firstCamTen } = user;
         var loadAgain = false;
+        var classForMainCam = '';
         if (stt == 1 && $(".classForMainCam").length == 0) {
            loadAgain = true;
+            classForMainCam = "classForMainCam";
         }
-        
-        $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
+       
+        $('#ulUser').append(`<li id="${peerId}" class="${classForMainCam}">${ten}</li>`);
         //console.log(peerId+"nguoi dung moi");
         console.log('so thu tu CO_NGUOI_DUNG_MOI: '+stt);
         console.log($('#ulUser').children().length);
