@@ -25,26 +25,23 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
     $('#div-dang-ky').hide();
 
     arrUserInfo.forEach(user => {
-        const { ten, peerId } = user;
+        const { ten, peerId, stt, firstCamId, firstCamTen } = user;
         $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
-        console.log(peerId);
-        var count = $("#ulUser").children().length;
-        if (count > 1 ) {
-            $(".firstCam").click();
-        } else {
-             $("#"+peerId).addClass("firstCam");
+        console.log(peerId+"nguoi dung cu");
+        if (stt > 1 ) {
+            $('#ulUser').append(`<li id="${firstCamId}">${firstCamTen}</li>`);
+            $("#"+firstCamId).click();
         }
     });
 
     socket.on('CO_NGUOI_DUNG_MOI', user => {
-        const { ten, peerId } = user;
+        const { ten, peerId, stt, firstCamId, firstCamTen } = user;
         $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
         console.log(peerId+"nguoi dung moi");
-        var total = $("#ulUser").children().length;
-        if (total > 1 ) {
-            $(".firstCam").click();
-        } else {
-             $("#"+peerId).addClass("firstCam");
+        
+        if (stt > 1 ) {
+            $('#ulUser').append(`<li id="${firstCamId}">${firstCamTen}</li>`);
+            $("#"+firstCamId).click();
         }
     });
 
