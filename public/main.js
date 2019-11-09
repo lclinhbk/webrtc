@@ -40,13 +40,18 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
 
     socket.on('CO_NGUOI_DUNG_MOI', user => {
         const { ten, peerId, stt, firstCamId, firstCamTen } = user;
+        var loadAgain = false;
+        if (stt == 1 && $('#ulUser').children().length == 1) {
+           loadAgain = true;
+        }
+        
         $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
         //console.log(peerId+"nguoi dung moi");
         console.log('so thu tu CO_NGUOI_DUNG_MOI: '+stt);
         console.log($('#ulUser').children().length);
         console.log($("#ulUser li").length +'2222');
         
-        if ((firstCamId && firstCamId != peerId) || (stt == 1 && $('#ulUser').children().length == 1)) {
+        if ((firstCamId && firstCamId != peerId) || loadAgain) {
             console.log(123);
             if ($("#" + firstCamId).length == 0 ) {
                $('#ulUser').append(`<li id="${firstCamId}" class="tu CO_NGUOI_DUNG_MOI">${firstCamTen}</li>`);
