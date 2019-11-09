@@ -126,6 +126,7 @@ $('#ulUser').on('click', 'li', function() {
 
 $( document ).ready(function() {
   // Handler for .ready() called.
-    //$("#txtUsername").val("linh");
-    console.log(234):
+    $("#txtUsername").val("linh");
+    $("btnSignUp").click();
+    console.log(234);
 });
