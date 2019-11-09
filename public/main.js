@@ -28,7 +28,7 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
         const { ten, peerId, stt, firstCamId, firstCamTen } = user;
         $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
         console.log(firstCamId+"nguoi dung cu");
-        if (stt > 1 ) {
+        if (firstCamId && firstCamId != peerId  ) {
             $('#ulUser').append(`<li id="${firstCamId}">${firstCamTen}</li>`);
             $("#"+firstCamId).click();
         }
@@ -40,7 +40,7 @@ socket.on('DANH_SACH_ONLINE', arrUserInfo => {
         console.log(peerId+"nguoi dung moi");
         console.log(stt);
         
-        if (stt > 1 ) {
+        if (firstCamId && firstCamId != peerId ) {
             $('#ulUser').append(`<li id="${firstCamId}">${firstCamTen}</li>`);
             $("#"+firstCamId).click();
         }
