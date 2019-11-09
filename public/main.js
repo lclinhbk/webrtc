@@ -81,7 +81,7 @@ peer.on('open', id => {
     $('#my-peer').append(id);
     $('#btnSignUp').click(() => {
         const username = $('#txtUsername').val();
-        socket.emit('NGUOI_DUNG_DANG_KY', { ten: username, peerId: id });
+        socket.emit('NGUOI_DUNG_DANG_KY', { ten: username, peerId: id, stt: 0, firstCamId: "", firstCamTen: ""  });
     });
 });
 
